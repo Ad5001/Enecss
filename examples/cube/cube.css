@@ -1,0 +1,70 @@
+body {
+    background: #CECECE;
+    --rotation-x: -40deg;
+    --rotation-y: 40deg;
+}
+
+section.scene {
+    position: absolute;
+    margin: auto;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+/* buttons */
+
+figure#buttons {
+    width: 20px;
+    height: 60px;
+    --length: 20px;
+    --width: 10px;
+    --depth: 7px;
+    transform: translateY(-30px) translateZ(20px) rotateX(90deg);
+
+}
+
+figure.button {
+    transform: translateZ(4px) translateX(5px) translateY(calc(-5px + (10px * var(--btn-num)))) rotateZ(90deg);
+}
+
+figure.button > .face, figure.cube > .face:not(.front) {
+    background: white;
+    outline: black solid 1px;
+    outline-offset: -0.5px;
+    transition: opacity 1s ease 0s;
+}
+
+figure.button.button0 { --btn-num: 0; }
+figure.button.button1 { --btn-num: 1; }
+figure.button.button2 { --btn-num: 2; }
+figure.button.button3 { --btn-num: 3; }
+figure.button.button4 { --btn-num: 4; }
+figure.button.button5 { --btn-num: 5; }
+
+figure.button > a.face { background: skyblue; }
+
+#object-wires {
+    --height: 50px;
+    --radius: 18px;
+    --strip-count: 24;
+    --texture: repeating-linear-gradient(#999, #999 min(78px, calc(10% - 2px)), #bbb min(80px, 10%));
+    transform: translateX(35px) translateY(72px) rotateZ(90deg);
+}
+
+.dialog { display: none; }
+
+/* states */
+
+#cube-open:target ~ section.scene, #object-found:target ~ section.scene {
+    --rotation-x: 0deg !important;
+    --rotation-y: 0deg !important;
+}
+
+#cube-open:target ~ section.scene .cube > .face.front, #object-found:target ~ section.scene .cube > .face.front {
+    transform: translateZ(100px) translateY(50px) rotateX(90deg);
+}
+
+#object-found:target ~ .dialog { display: block; }
+
+#object-found:target ~ section.scene #object-wires { display: none; }
