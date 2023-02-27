@@ -317,7 +317,7 @@ Example:
 
 ## Examples
 
-There is a sample cube example which makes use of practically everything you saw before in the `examples/cube` folder.
+There is a sample cube example which makes use of practically everything you saw before in the `examples/cube` folder. [Test it out online.](https://cdn.githubraw.com/Ad5001/Enecss/example/examples/cube/cube.html)
 
 ## F.A.Q.
 
