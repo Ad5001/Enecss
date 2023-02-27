@@ -1,0 +1,13 @@
+
+.scene figure.cylinder.textured { // TODO: Add other elements with strips.
+    // Maps a texture on a cylinder from left to right 
+    
+    --pstripcount: var(--strip-count, 24);
+    --ptexture: var(--texture, transparent);
+        
+    @for $i from 1 to 90 {
+        & > .strip-#{$i} {
+            background: no-repeat space calc(100% * #{$i - 1} / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+        }
+    }
+}

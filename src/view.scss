@@ -1,0 +1,31 @@
+
+// Rotating canvas view
+
+.view-section {
+    position: fixed;
+    width: 11.11vw;
+    height: 11.11vh;
+    z-index: 0;
+}
+
+@for $i from 0 through 9 {
+    // view sections
+    $rotation-x: $i * 20deg - 80deg;
+    $rotation-y: 160deg - ($i * 40deg);
+        
+    .view-top-#{$i} {
+        top: 11.11vh * $i;
+    }
+    
+    .view-top-#{$i}:hover ~ section.scene {
+        --rotation-x: #{$rotation-x};
+    }
+    
+    .view-left-#{$i} {
+        left: 11.11vw * $i;
+    }
+    
+    .view-left-#{$i}:hover ~ section.scene {
+        --rotation-y: #{$rotation-y};
+    }
+}

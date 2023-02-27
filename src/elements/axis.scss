@@ -1,0 +1,29 @@
+
+
+.scene figure.axises {
+    width: var(--width, 100px);
+    height: var(--height, 100px);
+    
+    & > .axis {
+        display: inline;
+        position: absolute;
+        width: var(--length, 100px);
+        height: var(--length2, 10px);
+    
+        $offset: calc(var(--length) / 2);
+        &-x {
+            background-color: red;
+            color: red;
+        }
+        &-y  {
+            transform: translateY($offset) translateX(calc(-1 * $offset)) rotateZ(90deg);
+            background-color: green;
+            color: green;
+        }
+        &-z {
+            transform: translateZ($offset) translateX(calc(-1 * $offset)) rotateX(90deg) rotateZ(90deg);
+            background-color: blue;
+            color: blue;
+        }
+    }
+}

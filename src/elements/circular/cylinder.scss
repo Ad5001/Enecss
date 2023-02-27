@@ -1,0 +1,26 @@
+
+
+.scene figure.cylinder {
+    // Two parameters: height (y), radius (x,z), and strip-count (number of strip, up to 90)
+    width: calc(var(--radius, 20px) * 2);
+    height: var(--height, 100px);
+    
+    --pradius: var(--radius, 20px);
+    --pstripcount: var(--strip-count, 24);
+    
+    & > .strip {
+        position: absolute;
+        width: calc(2 * var(--PI) * var(--pradius) / var(--pstripcount));
+        height: var(--height, 100px);
+        background: white;
+    }
+    
+    &.debug > .strip {
+        border: solid red;
+        border-width: 2px 0;
+    }
+        
+    @for $i from 1 to 90 {
+        & > .strip-#{$i} { transform: rotateY(calc($i * (360deg / var(--pstripcount)))) translateZ(var(--pradius)); }
+    }
+}

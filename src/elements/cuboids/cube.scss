@@ -1,0 +1,20 @@
+
+.scene figure.cube {
+    --halfsize: calc(var(--size, 100px) / 2);
+    width: var(--size, 100px);
+    height: var(--size, 100px);
+    
+    & > .face {
+        position: absolute;
+        width: var(--size, 100px);
+        height: var(--size, 100px);
+        
+        
+        &.front  { transform: rotateY(  0deg) translateZ(var(--halfsize)); }
+        &.right  { transform: rotateY( 90deg) translateZ(var(--halfsize)); }
+        &.back   { transform: rotateY(180deg) translateZ(var(--halfsize)); }
+        &.left   { transform: rotateY(-90deg) translateZ(var(--halfsize)); }
+        &.top    { transform: rotateX( 90deg) translateZ(var(--halfsize)); }
+        &.bottom { transform: rotateX(-90deg) translateZ(var(--halfsize)); }
+    }
+}

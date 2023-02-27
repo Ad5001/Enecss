@@ -1,0 +1,21 @@
+
+@import "scene";
+@import "view";
+
+/* elements */
+
+@import "elements/figure";
+@import "elements/axis";
+@import "elements/plane";
+@import "elements/circular/cylinder";
+@import "elements/cuboids/cube";
+@import "elements/cuboids/rectangular";
+
+/* effects */
+
+@import "effects/texture/strip-mapping";
+
+/* UI elements */
+
+@import "ui/buttons";
+@import "ui/tooltips";

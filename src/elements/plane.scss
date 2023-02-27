@@ -1,0 +1,17 @@
+
+// Planes are simple two faced figures with a width and a length.
+// The root element must contain to faces: front and back.
+
+.scene figure.plane {
+    width: var(--width);
+    height: var(--height);
+    
+    & > .face {
+        position: absolute;
+        width: var(--width);
+        height: var(--height);
+        
+        &.front  { transform: rotateY(  0deg); }
+        &.back   { transform: rotateY(180deg) translateZ(1px); }
+    }
+}

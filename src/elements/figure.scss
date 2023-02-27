@@ -1,0 +1,39 @@
+
+.scene {
+    & > figure.root {
+        display: block;
+        transform-origin: 50% 50%;
+        
+        width: var(--width);
+        height: var(--height);
+        
+        
+        position: relative;
+        transform: rotateX(var(--rotation-x, 0deg)) rotateY(var(--rotation-y, 0deg));
+        transition: transform 0.2s;
+    }
+    
+    & figure {
+        transform-style: preserve-3d;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+    
+    & .position-at-center {
+        transform: translateX(-50%) translateY(-50%);
+    }
+    
+    & .debug {
+        outline: solid 2px red;
+        outline-offset: -2px;
+        opacity: 1;
+    }
+    
+    & .hidden {
+        display: none;
+    }
+}

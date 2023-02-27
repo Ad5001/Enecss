@@ -1,0 +1,58 @@
+
+.scene figure.cuboid.rectangular {
+    // Three parameters: width (x), length (y), and depth (z)
+    --pwidth: var(--width, 100px);
+    --plength: var(--length, 100px);
+    --pdepth: var(--depth, 100px);
+    
+    --halfdepth: calc(var(--pdepth) / 2);
+    --halflength: calc(var(--plength) / 2);
+    
+    --mhalfwidth: calc(var(--pwidth) * -1);
+    --mhalflength: calc(var(--plength) * -1);
+    --mhalfdepth: calc(var(--pdepth) * -1);
+    
+    width: var(--pwidth);
+    height: var(--plength);
+    
+    & > .face {
+        position: absolute;
+        
+        &.front {
+            width: var(--pwidth);
+            height: var(--plength);
+            transform: rotateY(0deg) translateZ(var(--halfdepth));
+            
+        }
+        &.back {
+            width: var(--pwidth);
+            height: var(--plength);
+            transform: rotateY(180deg) translateZ(var(--halfdepth));
+        }
+        
+        &.left {
+            width: var(--pdepth);
+            height: var(--plength);
+            transform: rotateY(-90deg) translateZ(var(--halfdepth));
+        }
+        &.right {
+            width: var(--pdepth);
+            height: var(--plength);
+            transform: translateX(var(--pwidth)) rotateY(-90deg) translateZ(var(--halfdepth));
+            
+        }
+        
+        &.top {
+            width: var(--pwidth);
+            height: var(--pdepth);
+            transform: rotateX(90deg) translateZ(var(--halfdepth));
+            
+        }
+        &.bottom {
+            width: var(--pwidth);
+            height: var(--pdepth);
+            transform: translateY(var(--plength)) rotateX(90deg) translateZ(var(--halfdepth));
+        }
+    }
+}
+

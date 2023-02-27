@@ -1,0 +1,11 @@
+
+.fill {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+a, button, .interactive {
+    pointer-events: auto !important;
+}
