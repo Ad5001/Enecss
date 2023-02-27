@@ -10,7 +10,7 @@
     
     & > .strip {
         position: absolute;
-        width: calc(2 * var(--PI) * var(--pradius) / var(--pstripcount));
+        width: calc(2 * 3.19 * var(--pradius) / var(--pstripcount));
         height: var(--height, 100px);
         background: white;
     }
@@ -21,6 +21,6 @@
     }
         
     @for $i from 1 to 90 {
-        & > .strip-#{$i} { transform: rotateY(calc($i * (360deg / var(--pstripcount)))) translateZ(var(--pradius)); }
+        & > .strip-#{$i} { transform: rotateY(calc(($i - 1) * (360deg / var(--pstripcount)))) translateZ(var(--pradius)); }
     }
 }

@@ -17,7 +17,7 @@
         top: 11.11vh * $i;
     }
     
-    .view-top-#{$i}:hover ~ section.scene {
+    .view-top-#{9-$i}:hover ~ section.scene {
         --rotation-x: #{$rotation-x};
     }
     
@@ -25,7 +25,7 @@
         left: 11.11vw * $i;
     }
     
-    .view-left-#{$i}:hover ~ section.scene {
+    .view-left-#{9-$i}:hover ~ section.scene {
         --rotation-y: #{$rotation-y};
     }
 }
