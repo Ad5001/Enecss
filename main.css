@@ -1,0 +1,909 @@
+section.scene {
+  --PI: 3.14159265358979;
+  max-width: fit-content;
+  max-height: fit-content;
+  perspective: 600px;
+  border: solid 1px red;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.view-section {
+  position: fixed;
+  width: 11.11vw;
+  height: 11.11vh;
+  z-index: 0;
+}
+
+.view-top-0 {
+  top: 0vh;
+}
+
+.view-top-0:hover ~ section.scene {
+  --rotation-x: -80deg;
+}
+
+.view-left-0 {
+  left: 0vw;
+}
+
+.view-left-0:hover ~ section.scene {
+  --rotation-y: 160deg;
+}
+
+.view-top-1 {
+  top: 11.11vh;
+}
+
+.view-top-1:hover ~ section.scene {
+  --rotation-x: -60deg;
+}
+
+.view-left-1 {
+  left: 11.11vw;
+}
+
+.view-left-1:hover ~ section.scene {
+  --rotation-y: 120deg;
+}
+
+.view-top-2 {
+  top: 22.22vh;
+}
+
+.view-top-2:hover ~ section.scene {
+  --rotation-x: -40deg;
+}
+
+.view-left-2 {
+  left: 22.22vw;
+}
+
+.view-left-2:hover ~ section.scene {
+  --rotation-y: 80deg;
+}
+
+.view-top-3 {
+  top: 33.33vh;
+}
+
+.view-top-3:hover ~ section.scene {
+  --rotation-x: -20deg;
+}
+
+.view-left-3 {
+  left: 33.33vw;
+}
+
+.view-left-3:hover ~ section.scene {
+  --rotation-y: 40deg;
+}
+
+.view-top-4 {
+  top: 44.44vh;
+}
+
+.view-top-4:hover ~ section.scene {
+  --rotation-x: 0deg;
+}
+
+.view-left-4 {
+  left: 44.44vw;
+}
+
+.view-left-4:hover ~ section.scene {
+  --rotation-y: 0deg;
+}
+
+.view-top-5 {
+  top: 55.55vh;
+}
+
+.view-top-5:hover ~ section.scene {
+  --rotation-x: 20deg;
+}
+
+.view-left-5 {
+  left: 55.55vw;
+}
+
+.view-left-5:hover ~ section.scene {
+  --rotation-y: -40deg;
+}
+
+.view-top-6 {
+  top: 66.66vh;
+}
+
+.view-top-6:hover ~ section.scene {
+  --rotation-x: 40deg;
+}
+
+.view-left-6 {
+  left: 66.66vw;
+}
+
+.view-left-6:hover ~ section.scene {
+  --rotation-y: -80deg;
+}
+
+.view-top-7 {
+  top: 77.77vh;
+}
+
+.view-top-7:hover ~ section.scene {
+  --rotation-x: 60deg;
+}
+
+.view-left-7 {
+  left: 77.77vw;
+}
+
+.view-left-7:hover ~ section.scene {
+  --rotation-y: -120deg;
+}
+
+.view-top-8 {
+  top: 88.88vh;
+}
+
+.view-top-8:hover ~ section.scene {
+  --rotation-x: 80deg;
+}
+
+.view-left-8 {
+  left: 88.88vw;
+}
+
+.view-left-8:hover ~ section.scene {
+  --rotation-y: -160deg;
+}
+
+.view-top-9 {
+  top: 99.99vh;
+}
+
+.view-top-9:hover ~ section.scene {
+  --rotation-x: 100deg;
+}
+
+.view-left-9 {
+  left: 99.99vw;
+}
+
+.view-left-9:hover ~ section.scene {
+  --rotation-y: -200deg;
+}
+
+/* elements */
+.scene > figure.root {
+  display: block;
+  transform-origin: 50% 50%;
+  width: var(--width);
+  height: var(--height);
+  position: relative;
+  transform: rotateX(var(--rotation-x, 0deg)) rotateY(var(--rotation-y, 0deg));
+  transition: transform 0.2s;
+}
+.scene figure {
+  transform-style: preserve-3d;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.scene .position-at-center {
+  transform: translateX(-50%) translateY(-50%);
+}
+.scene .debug {
+  outline: solid 2px red;
+  outline-offset: -2px;
+  opacity: 1;
+}
+.scene .hidden {
+  display: none;
+}
+
+.scene figure.axises {
+  width: var(--width, 100px);
+  height: var(--height, 100px);
+}
+.scene figure.axises > .axis {
+  display: inline;
+  position: absolute;
+  width: var(--length, 100px);
+  height: var(--length2, 10px);
+}
+.scene figure.axises > .axis-x {
+  background-color: red;
+  color: red;
+}
+.scene figure.axises > .axis-y {
+  transform: translateY(calc(var(--length) / 2)) translateX(calc(-1 * var(--length) / 2)) rotateZ(90deg);
+  background-color: green;
+  color: green;
+}
+.scene figure.axises > .axis-z {
+  transform: translateZ(calc(var(--length) / 2)) translateX(calc(-1 * var(--length) / 2)) rotateX(90deg) rotateZ(90deg);
+  background-color: blue;
+  color: blue;
+}
+
+.scene figure.plane {
+  width: var(--width);
+  height: var(--height);
+}
+.scene figure.plane > .face {
+  position: absolute;
+  width: var(--width);
+  height: var(--height);
+}
+.scene figure.plane > .face.front {
+  transform: rotateY(0deg);
+}
+.scene figure.plane > .face.back {
+  transform: rotateY(180deg) translateZ(1px);
+}
+
+.scene figure.cylinder {
+  width: calc(var(--radius, 20px) * 2);
+  height: var(--height, 100px);
+  --pradius: var(--radius, 20px);
+  --pstripcount: var(--strip-count, 24);
+}
+.scene figure.cylinder > .strip {
+  position: absolute;
+  width: calc(2 * var(--PI) * var(--pradius) / var(--pstripcount));
+  height: var(--height, 100px);
+  background: white;
+}
+.scene figure.cylinder.debug > .strip {
+  border: solid red;
+  border-width: 2px 0;
+}
+.scene figure.cylinder > .strip-1 {
+  transform: rotateY(calc(1 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-2 {
+  transform: rotateY(calc(2 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-3 {
+  transform: rotateY(calc(3 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-4 {
+  transform: rotateY(calc(4 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-5 {
+  transform: rotateY(calc(5 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-6 {
+  transform: rotateY(calc(6 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-7 {
+  transform: rotateY(calc(7 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-8 {
+  transform: rotateY(calc(8 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-9 {
+  transform: rotateY(calc(9 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-10 {
+  transform: rotateY(calc(10 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-11 {
+  transform: rotateY(calc(11 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-12 {
+  transform: rotateY(calc(12 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-13 {
+  transform: rotateY(calc(13 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-14 {
+  transform: rotateY(calc(14 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-15 {
+  transform: rotateY(calc(15 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-16 {
+  transform: rotateY(calc(16 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-17 {
+  transform: rotateY(calc(17 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-18 {
+  transform: rotateY(calc(18 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-19 {
+  transform: rotateY(calc(19 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-20 {
+  transform: rotateY(calc(20 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-21 {
+  transform: rotateY(calc(21 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-22 {
+  transform: rotateY(calc(22 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-23 {
+  transform: rotateY(calc(23 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-24 {
+  transform: rotateY(calc(24 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-25 {
+  transform: rotateY(calc(25 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-26 {
+  transform: rotateY(calc(26 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-27 {
+  transform: rotateY(calc(27 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-28 {
+  transform: rotateY(calc(28 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-29 {
+  transform: rotateY(calc(29 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-30 {
+  transform: rotateY(calc(30 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-31 {
+  transform: rotateY(calc(31 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-32 {
+  transform: rotateY(calc(32 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-33 {
+  transform: rotateY(calc(33 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-34 {
+  transform: rotateY(calc(34 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-35 {
+  transform: rotateY(calc(35 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-36 {
+  transform: rotateY(calc(36 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-37 {
+  transform: rotateY(calc(37 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-38 {
+  transform: rotateY(calc(38 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-39 {
+  transform: rotateY(calc(39 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-40 {
+  transform: rotateY(calc(40 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-41 {
+  transform: rotateY(calc(41 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-42 {
+  transform: rotateY(calc(42 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-43 {
+  transform: rotateY(calc(43 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-44 {
+  transform: rotateY(calc(44 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-45 {
+  transform: rotateY(calc(45 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-46 {
+  transform: rotateY(calc(46 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-47 {
+  transform: rotateY(calc(47 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-48 {
+  transform: rotateY(calc(48 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-49 {
+  transform: rotateY(calc(49 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-50 {
+  transform: rotateY(calc(50 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-51 {
+  transform: rotateY(calc(51 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-52 {
+  transform: rotateY(calc(52 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-53 {
+  transform: rotateY(calc(53 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-54 {
+  transform: rotateY(calc(54 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-55 {
+  transform: rotateY(calc(55 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-56 {
+  transform: rotateY(calc(56 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-57 {
+  transform: rotateY(calc(57 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-58 {
+  transform: rotateY(calc(58 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-59 {
+  transform: rotateY(calc(59 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-60 {
+  transform: rotateY(calc(60 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-61 {
+  transform: rotateY(calc(61 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-62 {
+  transform: rotateY(calc(62 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-63 {
+  transform: rotateY(calc(63 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-64 {
+  transform: rotateY(calc(64 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-65 {
+  transform: rotateY(calc(65 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-66 {
+  transform: rotateY(calc(66 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-67 {
+  transform: rotateY(calc(67 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-68 {
+  transform: rotateY(calc(68 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-69 {
+  transform: rotateY(calc(69 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-70 {
+  transform: rotateY(calc(70 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-71 {
+  transform: rotateY(calc(71 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-72 {
+  transform: rotateY(calc(72 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-73 {
+  transform: rotateY(calc(73 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-74 {
+  transform: rotateY(calc(74 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-75 {
+  transform: rotateY(calc(75 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-76 {
+  transform: rotateY(calc(76 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-77 {
+  transform: rotateY(calc(77 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-78 {
+  transform: rotateY(calc(78 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-79 {
+  transform: rotateY(calc(79 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-80 {
+  transform: rotateY(calc(80 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-81 {
+  transform: rotateY(calc(81 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-82 {
+  transform: rotateY(calc(82 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-83 {
+  transform: rotateY(calc(83 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-84 {
+  transform: rotateY(calc(84 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-85 {
+  transform: rotateY(calc(85 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-86 {
+  transform: rotateY(calc(86 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-87 {
+  transform: rotateY(calc(87 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-88 {
+  transform: rotateY(calc(88 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+.scene figure.cylinder > .strip-89 {
+  transform: rotateY(calc(89 * 360deg / var(--pstripcount))) translateZ(var(--pradius));
+}
+
+.scene figure.cube {
+  --halfsize: calc(var(--size, 100px) / 2);
+  width: var(--size, 100px);
+  height: var(--size, 100px);
+}
+.scene figure.cube > .face {
+  position: absolute;
+  width: var(--size, 100px);
+  height: var(--size, 100px);
+}
+.scene figure.cube > .face.front {
+  transform: rotateY(0deg) translateZ(var(--halfsize));
+}
+.scene figure.cube > .face.right {
+  transform: rotateY(90deg) translateZ(var(--halfsize));
+}
+.scene figure.cube > .face.back {
+  transform: rotateY(180deg) translateZ(var(--halfsize));
+}
+.scene figure.cube > .face.left {
+  transform: rotateY(-90deg) translateZ(var(--halfsize));
+}
+.scene figure.cube > .face.top {
+  transform: rotateX(90deg) translateZ(var(--halfsize));
+}
+.scene figure.cube > .face.bottom {
+  transform: rotateX(-90deg) translateZ(var(--halfsize));
+}
+
+.scene figure.cuboid.rectangular {
+  --pwidth: var(--width, 100px);
+  --plength: var(--length, 100px);
+  --pdepth: var(--depth, 100px);
+  --halfdepth: calc(var(--pdepth) / 2);
+  --halflength: calc(var(--plength) / 2);
+  --mhalfwidth: calc(var(--pwidth) * -1);
+  --mhalflength: calc(var(--plength) * -1);
+  --mhalfdepth: calc(var(--pdepth) * -1);
+  width: var(--pwidth);
+  height: var(--plength);
+}
+.scene figure.cuboid.rectangular > .face {
+  position: absolute;
+}
+.scene figure.cuboid.rectangular > .face.front {
+  width: var(--pwidth);
+  height: var(--plength);
+  transform: rotateY(0deg) translateZ(var(--halfdepth));
+}
+.scene figure.cuboid.rectangular > .face.back {
+  width: var(--pwidth);
+  height: var(--plength);
+  transform: rotateY(180deg) translateZ(var(--halfdepth));
+}
+.scene figure.cuboid.rectangular > .face.left {
+  width: var(--pdepth);
+  height: var(--plength);
+  transform: rotateY(-90deg) translateZ(var(--halfdepth));
+}
+.scene figure.cuboid.rectangular > .face.right {
+  width: var(--pdepth);
+  height: var(--plength);
+  transform: translateX(var(--pwidth)) rotateY(-90deg) translateZ(var(--halfdepth));
+}
+.scene figure.cuboid.rectangular > .face.top {
+  width: var(--pwidth);
+  height: var(--pdepth);
+  transform: rotateX(90deg) translateZ(var(--halfdepth));
+}
+.scene figure.cuboid.rectangular > .face.bottom {
+  width: var(--pwidth);
+  height: var(--pdepth);
+  transform: translateY(var(--plength)) rotateX(90deg) translateZ(var(--halfdepth));
+}
+
+/* effects */
+.scene figure.cylinder.textured {
+  --pstripcount: var(--strip-count, 24);
+  --ptexture: var(--texture, transparent);
+}
+.scene figure.cylinder.textured > .strip-1 {
+  background: no-repeat space calc(100% * 0 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-2 {
+  background: no-repeat space calc(100% * 1 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-3 {
+  background: no-repeat space calc(100% * 2 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-4 {
+  background: no-repeat space calc(100% * 3 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-5 {
+  background: no-repeat space calc(100% * 4 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-6 {
+  background: no-repeat space calc(100% * 5 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-7 {
+  background: no-repeat space calc(100% * 6 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-8 {
+  background: no-repeat space calc(100% * 7 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-9 {
+  background: no-repeat space calc(100% * 8 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-10 {
+  background: no-repeat space calc(100% * 9 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-11 {
+  background: no-repeat space calc(100% * 10 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-12 {
+  background: no-repeat space calc(100% * 11 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-13 {
+  background: no-repeat space calc(100% * 12 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-14 {
+  background: no-repeat space calc(100% * 13 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-15 {
+  background: no-repeat space calc(100% * 14 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-16 {
+  background: no-repeat space calc(100% * 15 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-17 {
+  background: no-repeat space calc(100% * 16 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-18 {
+  background: no-repeat space calc(100% * 17 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-19 {
+  background: no-repeat space calc(100% * 18 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-20 {
+  background: no-repeat space calc(100% * 19 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-21 {
+  background: no-repeat space calc(100% * 20 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-22 {
+  background: no-repeat space calc(100% * 21 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-23 {
+  background: no-repeat space calc(100% * 22 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-24 {
+  background: no-repeat space calc(100% * 23 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-25 {
+  background: no-repeat space calc(100% * 24 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-26 {
+  background: no-repeat space calc(100% * 25 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-27 {
+  background: no-repeat space calc(100% * 26 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-28 {
+  background: no-repeat space calc(100% * 27 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-29 {
+  background: no-repeat space calc(100% * 28 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-30 {
+  background: no-repeat space calc(100% * 29 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-31 {
+  background: no-repeat space calc(100% * 30 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-32 {
+  background: no-repeat space calc(100% * 31 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-33 {
+  background: no-repeat space calc(100% * 32 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-34 {
+  background: no-repeat space calc(100% * 33 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-35 {
+  background: no-repeat space calc(100% * 34 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-36 {
+  background: no-repeat space calc(100% * 35 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-37 {
+  background: no-repeat space calc(100% * 36 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-38 {
+  background: no-repeat space calc(100% * 37 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-39 {
+  background: no-repeat space calc(100% * 38 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-40 {
+  background: no-repeat space calc(100% * 39 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-41 {
+  background: no-repeat space calc(100% * 40 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-42 {
+  background: no-repeat space calc(100% * 41 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-43 {
+  background: no-repeat space calc(100% * 42 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-44 {
+  background: no-repeat space calc(100% * 43 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-45 {
+  background: no-repeat space calc(100% * 44 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-46 {
+  background: no-repeat space calc(100% * 45 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-47 {
+  background: no-repeat space calc(100% * 46 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-48 {
+  background: no-repeat space calc(100% * 47 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-49 {
+  background: no-repeat space calc(100% * 48 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-50 {
+  background: no-repeat space calc(100% * 49 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-51 {
+  background: no-repeat space calc(100% * 50 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-52 {
+  background: no-repeat space calc(100% * 51 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-53 {
+  background: no-repeat space calc(100% * 52 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-54 {
+  background: no-repeat space calc(100% * 53 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-55 {
+  background: no-repeat space calc(100% * 54 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-56 {
+  background: no-repeat space calc(100% * 55 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-57 {
+  background: no-repeat space calc(100% * 56 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-58 {
+  background: no-repeat space calc(100% * 57 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-59 {
+  background: no-repeat space calc(100% * 58 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-60 {
+  background: no-repeat space calc(100% * 59 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-61 {
+  background: no-repeat space calc(100% * 60 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-62 {
+  background: no-repeat space calc(100% * 61 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-63 {
+  background: no-repeat space calc(100% * 62 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-64 {
+  background: no-repeat space calc(100% * 63 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-65 {
+  background: no-repeat space calc(100% * 64 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-66 {
+  background: no-repeat space calc(100% * 65 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-67 {
+  background: no-repeat space calc(100% * 66 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-68 {
+  background: no-repeat space calc(100% * 67 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-69 {
+  background: no-repeat space calc(100% * 68 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-70 {
+  background: no-repeat space calc(100% * 69 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-71 {
+  background: no-repeat space calc(100% * 70 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-72 {
+  background: no-repeat space calc(100% * 71 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-73 {
+  background: no-repeat space calc(100% * 72 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-74 {
+  background: no-repeat space calc(100% * 73 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-75 {
+  background: no-repeat space calc(100% * 74 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-76 {
+  background: no-repeat space calc(100% * 75 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-77 {
+  background: no-repeat space calc(100% * 76 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-78 {
+  background: no-repeat space calc(100% * 77 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-79 {
+  background: no-repeat space calc(100% * 78 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-80 {
+  background: no-repeat space calc(100% * 79 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-81 {
+  background: no-repeat space calc(100% * 80 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-82 {
+  background: no-repeat space calc(100% * 81 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-83 {
+  background: no-repeat space calc(100% * 82 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-84 {
+  background: no-repeat space calc(100% * 83 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-85 {
+  background: no-repeat space calc(100% * 84 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-86 {
+  background: no-repeat space calc(100% * 85 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-87 {
+  background: no-repeat space calc(100% * 86 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-88 {
+  background: no-repeat space calc(100% * 87 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+.scene figure.cylinder.textured > .strip-89 {
+  background: no-repeat space calc(100% * 88 / (var(--pstripcount) - 1)) 0/calc(100% * (var(--pstripcount) - 1)) 100% var(--ptexture);
+}
+
+/* UI elements */
+.fill {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+a, button, .interactive {
+  pointer-events: auto !important;
+}
+
+.scene > figure.root figure.interactive:hover > .tooltip {
+  opacity: 0.8;
+}
+
+.tooltip {
+  width: fit-content;
+  padding: 5px;
+  opacity: 0;
+  border-radius: 5px;
+  background: #222;
+  font-size: 1em;
+  color: white;
+  transition: opacity 0.2s;
+}
+
+/*# sourceMappingURL=main.css.map */
