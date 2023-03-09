@@ -11,7 +11,7 @@
 @for $i from 0 through 9 {
     // view sections
     $rotation-x: $i * 20deg - 80deg;
-    $rotation-y: 160deg - ($i * 40deg);
+    $rotation-y: 200deg - ($i * 40deg);
         
     .view-top-#{$i} {
         top: 11.11vh * $i;
