@@ -10,7 +10,7 @@
     
     & > .strip {
         position: absolute;
-        width: calc(2 * 3.19 * var(--pradius) / var(--pstripcount));
+        width: calc(2 * 3.18 * var(--pradius) / var(--pstripcount));
         height: var(--height, 100px);
         background: white;
     }
